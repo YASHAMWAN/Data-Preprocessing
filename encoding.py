@@ -25,3 +25,11 @@ imputer.fit(X[:, 1:3])
 X[:, 1:3] = imputer.transform(X[: ,1:3])
 
 print(X)
+
+#encoding the variables
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder() #create an object
+X[:, 0] = labelencoder_X.fit_transform(X[:,0])
+
+onehotencoder = OneHotEncoder(categorical_features = [1], categories = auto)
+X[:, 0] = onehotencoder.fit_transform(X).toarray()
